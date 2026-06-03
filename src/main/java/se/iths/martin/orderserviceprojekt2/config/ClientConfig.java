@@ -9,7 +9,7 @@ import org.springframework.web.client.RestClient;
 public class ClientConfig {
 
     @Bean
-    public RestClient productRestClient(@Value("${product-service.base-url}") String baseUrl) {
+    public RestClient productRestClient(@Value("${product-service-base-url}") String baseUrl) {
 
         return RestClient.builder()
                 .baseUrl(baseUrl)
