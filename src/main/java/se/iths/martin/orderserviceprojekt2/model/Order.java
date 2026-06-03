@@ -1,4 +1,4 @@
-package model;
+package se.iths.martin.orderserviceprojekt2.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

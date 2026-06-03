@@ -1,4 +1,4 @@
-package dto;
+package se.iths.martin.orderserviceprojekt2.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

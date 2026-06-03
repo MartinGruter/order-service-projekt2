@@ -1,15 +1,16 @@
-package dto;
+package se.iths.martin.orderserviceprojekt2.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItemRequestDTO {
-    private Long productId;
-    private int quantity;
+public class OrderRequestDTO {
+    private List<OrderItemRequestDTO> items;
 }

@@ -1,17 +1,17 @@
-package service;
+package se.iths.martin.orderserviceprojekt2.service;
 
-import Repository.OrderRepository;
-import client.ProductClient;
-import dto.OrderItemResponseDTO;
-import dto.OrderRequestDTO;
-import dto.OrderResponseDTO;
-import dto.ProductInfoDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import messaging.OrderMessageProducer;
-import model.Order;
-import model.OrderItem;
 import org.springframework.stereotype.Service;
+import se.iths.martin.orderserviceprojekt2.Repository.OrderRepository;
+import se.iths.martin.orderserviceprojekt2.client.ProductClient;
+import se.iths.martin.orderserviceprojekt2.dto.OrderItemResponseDTO;
+import se.iths.martin.orderserviceprojekt2.dto.OrderRequestDTO;
+import se.iths.martin.orderserviceprojekt2.dto.OrderResponseDTO;
+import se.iths.martin.orderserviceprojekt2.dto.ProductInfoDTO;
+import se.iths.martin.orderserviceprojekt2.messaging.OrderMessageProducer;
+import se.iths.martin.orderserviceprojekt2.model.Order;
+import se.iths.martin.orderserviceprojekt2.model.OrderItem;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -76,7 +76,7 @@ public class OrderService {
                 order.getOrderItems()
                         .stream()
                         .map(item -> new OrderItemResponseDTO(
-                                null,
+                                item.getId(),
                                 item.getName(),
                                 item.getPrice(),
                                 item.getQuantity()
@@ -85,6 +85,7 @@ public class OrderService {
 
         return new OrderResponseDTO(
                 order.getId(),
+                order.getOrderDate(),
                 order.getCustomerName(),
                 order.getTotalPrice(),
                 items

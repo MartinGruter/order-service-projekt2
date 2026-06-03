@@ -1,4 +1,4 @@
-package dto;
+package se.iths.martin.orderserviceprojekt2.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class OrderItemResponseDTO {
     private Long productId;
-    private String Name;
+    private String name;
     private BigDecimal price;
     private int quantity;
 }

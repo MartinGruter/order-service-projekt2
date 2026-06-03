@@ -1,4 +1,4 @@
-package config;
+package se.iths.martin.orderserviceprojekt2.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ import org.springframework.web.client.RestClient;
 public class ClientConfig {
 
     @Bean
-    public RestClient productRestClient(@Value("${product-service.base-url}") String baseUrl) {
+    public RestClient productRestClient(@Value("${product-service-base-url}") String baseUrl) {
 
         return RestClient.builder()
                 .baseUrl(baseUrl)
