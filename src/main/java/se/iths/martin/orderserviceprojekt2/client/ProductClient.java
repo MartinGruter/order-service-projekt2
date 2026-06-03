@@ -1,13 +1,13 @@
-package client;
+package se.iths.martin.orderserviceprojekt2.client;
 
-import dto.OrderRequestDTO;
-import dto.ProductInfoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.server.ResponseStatusException;
+import se.iths.martin.orderserviceprojekt2.dto.OrderRequestDTO;
+import se.iths.martin.orderserviceprojekt2.dto.ProductInfoDTO;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class ProductClient {
             return productRestClient.post()
                     .uri("/products/stock/decrease")
                     .header("Authorization", bearerToken)
-                    .body(request)
+                    .body(request.getItems())
                     .retrieve()
                     .body(new ParameterizedTypeReference<>() {
                     });

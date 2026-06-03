@@ -1,10 +1,10 @@
-package messaging;
+package se.iths.martin.orderserviceprojekt2.messaging;
 
-import dto.OrderResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import se.iths.martin.orderserviceprojekt2.dto.OrderResponseDTO;
 
 @Component
 @RequiredArgsConstructor
@@ -16,6 +16,6 @@ public class OrderMessageProducer {
     private String orderConfirmationQueue;
 
     public void sendOrderConfirmation(OrderResponseDTO response) {
-        rabbitTemplate.convertAndSend(orderConfirmationQueue, response);
+        rabbitTemplate.convertAndSend("new-queue", response);
     }
 }

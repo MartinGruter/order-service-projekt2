@@ -1,4 +1,4 @@
-package config;
+package se.iths.martin.orderserviceprojekt2.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    public static final String QUEUE = "email-queue";
+    public static final String QUEUE = "new-queue";
 
     @Bean
     public Queue queue() {

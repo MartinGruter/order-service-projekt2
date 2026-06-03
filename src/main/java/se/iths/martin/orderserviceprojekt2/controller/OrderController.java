@@ -1,7 +1,5 @@
-package controller;
+package se.iths.martin.orderserviceprojekt2.controller;
 
-import dto.OrderRequestDTO;
-import dto.OrderResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.OrderService;
+import se.iths.martin.orderserviceprojekt2.dto.OrderRequestDTO;
+import se.iths.martin.orderserviceprojekt2.dto.OrderResponseDTO;
+import se.iths.martin.orderserviceprojekt2.service.OrderService;
 
 @RestController
 @RequestMapping("/orders")
