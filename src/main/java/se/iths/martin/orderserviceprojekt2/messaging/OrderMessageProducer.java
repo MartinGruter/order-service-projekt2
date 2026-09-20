@@ -16,6 +16,6 @@ public class OrderMessageProducer {
     private String orderConfirmationQueue;
 
     public void sendOrderConfirmation(OrderResponseDTO response) {
-        rabbitTemplate.convertAndSend("new-queue", response);
+        rabbitTemplate.convertAndSend(orderConfirmationQueue, response);
     }
 }
