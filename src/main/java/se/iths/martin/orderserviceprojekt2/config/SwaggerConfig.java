@@ -9,9 +9,17 @@ import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Konfigurerar OpenAPI-dokumentationen och JWT-inloggning i Swagger UI.
+ */
 @Configuration
 public class SwaggerConfig {
 
+    /**
+     * Beskriver API:t och dess Bearer-autentisering i OpenAPI.
+     *
+     * @return API-dokumentation med ett JWT-säkerhetsschema
+     */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
@@ -30,6 +38,12 @@ public class SwaggerConfig {
                                         .description("JWT auth description")));
     }
 
+    /**
+     * Samlar samtliga API-sökvägar i dokumentationsgruppen {@code public}.
+     * Gruppen styr dokumentationen, inte åtkomstbehörigheter.
+     *
+     * @return grupp för API-dokumentationen
+     */
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()

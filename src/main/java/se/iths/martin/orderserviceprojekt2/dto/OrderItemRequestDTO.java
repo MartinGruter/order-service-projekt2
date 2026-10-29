@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * En beställd produkt, angiven med produkt-id och antal.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

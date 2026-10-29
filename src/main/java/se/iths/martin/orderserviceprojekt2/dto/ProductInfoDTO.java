@@ -7,6 +7,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+/**
+ * Produktuppgifter som product-service returnerar efter lagerminskning.
+ * Används för att skapa orderrader och beräkna totalpriset.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

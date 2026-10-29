@@ -8,6 +8,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+/**
+ * Sparad orderrad med produktnamn, styckpris och antal vid beställningen.
+ * Varje orderrad tillhör en order.
+ */
 @Entity
 @Getter
 @Setter

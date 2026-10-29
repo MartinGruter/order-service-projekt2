@@ -15,6 +15,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+/**
+ * Konfigurerar JWT-autentisering, rollbaserad åtkomst och CORS för order-service.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -22,6 +25,15 @@ public class SecurityConfig {
     @Value("${app.cors.allowed-origins}")
     private String allowedOrigins;
 
+    /**
+     * Tillåter publik Swagger-dokumentation och kräver rollen USER eller ADMIN för orderanrop.
+     * Övriga anrop kräver autentisering.
+     *
+     * @param http Spring Securitys konfigurationsobjekt
+     * @param jwtAuthenticationConverter konverterare för roller i JWT
+     * @return den byggda säkerhetsfilterkedjan
+     * @throws Exception om filterkedjan inte kan byggas
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
@@ -45,6 +57,11 @@ public class SecurityConfig {
                 .build();
     }
 
+    /**
+     * Läser behörigheter från JWT-claimet {@code roles} utan att lägga till något prefix.
+     *
+     * @return konverterare för JWT-roller till Spring Security-behörigheter
+     */
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
@@ -56,6 +73,12 @@ public class SecurityConfig {
         return jwtConverter;
     }
 
+    /**
+     * Konfigurerar tillåtna origins, HTTP-metoder och headers för CORS-anrop.
+     * Origins hämtas från {@code app.cors.allowed-origins} som en kommaseparerad lista.
+     *
+     * @return CORS-konfiguration för samtliga sökvägar
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

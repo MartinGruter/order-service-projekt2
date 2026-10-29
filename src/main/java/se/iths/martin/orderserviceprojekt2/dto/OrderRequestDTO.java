@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Inkommande order med produkt-id:n och önskat antal för varje orderrad.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

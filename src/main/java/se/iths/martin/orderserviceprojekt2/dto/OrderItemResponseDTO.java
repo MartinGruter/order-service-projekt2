@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+/**
+ * Orderrad i ordersvaret med namn, styckpris och antal.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
