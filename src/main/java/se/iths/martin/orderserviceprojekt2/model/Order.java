@@ -10,6 +10,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Databasentitet för en order med kund, datum, orderrader och totalpris.
+ */
 @Entity
 @Table(name = "orders")
 @Getter

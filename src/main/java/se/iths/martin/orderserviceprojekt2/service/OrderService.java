@@ -18,6 +18,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Hanterar orderläggning, beräkning av totalpris och lagring av order.
+ * Anropar product-service för lagerminskning och skickar orderbekräftelser via RabbitMQ.
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -27,6 +31,17 @@ public class OrderService {
     private final ProductClient productClient;
     private final OrderMessageProducer orderMessageProducer;
 
+    /**
+     * Minskar lagersaldot i product-service, sparar ordern och skickar ett bekräftelsemeddelande.
+     * Produktnamn och priser hämtas från product-service, inte från klientens indata.
+     *
+     * @param request produkter och antal som ska beställas
+     * @param customerName kundens identitet från JWT:ns subject
+     * @param bearerToken Authorization-header med prefixet {@code Bearer }, som skickas till product-service
+     * @return den sparade ordern med orderrader och totalpris
+     * @throws org.springframework.web.server.ResponseStatusException om product-service returnerar ett felsvar
+     * @throws org.springframework.amqp.AmqpException om bekräftelsemeddelandet inte kan skickas
+     */
     public OrderResponseDTO createOrder(
             OrderRequestDTO request,
             String customerName,

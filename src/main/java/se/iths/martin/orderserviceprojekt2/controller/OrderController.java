@@ -13,6 +13,9 @@ import se.iths.martin.orderserviceprojekt2.dto.OrderRequestDTO;
 import se.iths.martin.orderserviceprojekt2.dto.OrderResponseDTO;
 import se.iths.martin.orderserviceprojekt2.service.OrderService;
 
+/**
+ * REST-controller för att skapa order åt den JWT-autentiserade användaren.
+ */
 @RestController
 @RequestMapping("/orders")
 @RequiredArgsConstructor
@@ -20,6 +23,13 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    /**
+     * Skapar en order med JWT:ns subject som kundnamn.
+     *
+     * @param request produkter och antal som kunden vill beställa
+     * @param jwt verifierad JWT för den inloggade användaren
+     * @return den skapade ordern med status {@code 201 Created}
+     */
     @PostMapping
     public ResponseEntity<OrderResponseDTO> createOrder(
             @RequestBody OrderRequestDTO request,
